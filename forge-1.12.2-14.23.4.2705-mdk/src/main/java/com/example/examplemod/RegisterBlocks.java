@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
  * subscribing to an event, <b>before</b> preInit.
  */
 @EventBusSubscriber 
-public class BlockRegistry {
+public class RegisterBlocks {
 	
 	
 	
@@ -30,6 +30,7 @@ public class BlockRegistry {
 	public static class Objects {
 
 		public static final Block test_block = null;
+//		public static final Item test_item = null;
 	}
 	
 	
@@ -41,8 +42,18 @@ public class BlockRegistry {
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> event) {
 
+		System.out.println(" >>>>>>>>>>>>>  Injecting Test BLock to registry");
 		event.getRegistry().registerAll(new TestBlock());
 	}
+	
+	
+//	public static void registerItems(Register<Item> event) {
+//		System.out.println(" >>>>>>>>>>>>>  Injecting Test Item to registry");
+//		event.getRegistry().registerAll(new TestItem());
+//	}
+	
+	
+	
 	
 	
 	/*
@@ -77,3 +88,4 @@ public class BlockRegistry {
 	
 
 }
+
