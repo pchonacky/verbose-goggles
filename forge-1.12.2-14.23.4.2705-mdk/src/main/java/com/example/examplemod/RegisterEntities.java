@@ -22,6 +22,8 @@ public class RegisterEntities {
 	@SubscribeEvent
 	public static void registerEntityEntries(Register<EntityEntry> event) {
 
+		
+		System.out.println(" >>>>>>>>>>>>>  Injecting Test Entity  to registry");
 		EntityEntry this_entityEntry = EntityEntryBuilder.create().entity(TestEntity.class).id("test_entity", 0).name("test_entity").build();
 		
 		event.getRegistry().registerAll(this_entityEntry);
