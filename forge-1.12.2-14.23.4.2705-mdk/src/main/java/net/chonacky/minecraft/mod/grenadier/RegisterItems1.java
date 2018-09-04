@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package net.chonacky.minecraft.mod.grenadier;
 
 
 
@@ -9,21 +9,21 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 @EventBusSubscriber
-public class RegisterItems {
+public class RegisterItems1 {
 
 
 
-	@ObjectHolder(value = ExampleMod.MODID)
+	@ObjectHolder(value = Grenadier.MODID)
 	public static class Objects {
 
-		public static final Item test_item = null;
+		public static final Item my_fireball = null;
 	}
 	
 	
 	@SubscribeEvent
 	public static void registerItems(Register<Item> event) {
-		System.out.println(" >>>>>>>>>>>>>  Injecting Test Item to registry");
-		event.getRegistry().registerAll(new TestItem());
+		System.out.println(" >>>>>>>>>>>>>  Injecting Fireball Item to registry");
+		event.getRegistry().registerAll(new ItemMyFireball());
 	}
 	
 	
