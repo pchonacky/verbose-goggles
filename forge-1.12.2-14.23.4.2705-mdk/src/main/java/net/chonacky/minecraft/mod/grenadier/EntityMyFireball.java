@@ -21,15 +21,21 @@ public class EntityMyFireball extends EntityLargeFireball {
 			double accX, double accZ, double accY) {
 		super(thisWorld, throwingEntity, accX, accZ, accY);
 		float f = 0.2F;
-		this.motionX=0.0F;
-		this.motionY=0.0F;
-		this.motionZ=0.0F;
+		this.motionX=0.1F;
+		this.motionY=0.1F;
+		this.motionZ=0.1F;
 //		this.posY = throwingEntity.getEyeHeight();
 		this.posY = this.posY +0.5F;
         this.accelerationX = (double)(-MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI) * f);
         this.accelerationZ = (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI) * f);
         this.accelerationY = (double)(-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI) * f);
 	}
+
+//	@Override
+//	protected void onImpact(RayTraceResult result) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 
 }
