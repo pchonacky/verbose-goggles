@@ -1,18 +1,11 @@
-		RenderingRegistry.registerEntityRenderingHandler(TestEntity.class, new IRenderFactory<TestEntity>() {
+		
+Lists for registration:
+		
+public static List<Item> ITEMS = new ArrayList<Item>();
+public static List<EntityEntry> ENTITIES = new ArrayList<EntityEntry>();
+	
 
-			@Override
-			public Render<TestEntity> createRenderFor(RenderManager manager) 
-			{
-				System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>> creating renderer");
-				return new RenderTestEntity(Minecraft.getMinecraft().getRenderManager(), 1.0F);
-			}
-			
-			
-		});
-
-
-
-
+----------------------------------------------------------------
       //for NBT read/write
 	private boolean aBoolean;
     private byte aByte;

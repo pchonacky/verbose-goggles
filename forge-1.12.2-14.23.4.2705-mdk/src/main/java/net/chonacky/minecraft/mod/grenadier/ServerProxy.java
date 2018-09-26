@@ -11,8 +11,13 @@ import net.minecraft.item.Item;
  */
 public class ServerProxy {
 
-	public void registerModel(Item item, int i, String type) {
+	public void registerItemModel(Item item, int i, String type) {
 		//nothing to do here (Client Only)
+	}
+
+	public void RegisterRenderers() {
+		// nothing to do here (Client Only)
+		
 	}
 	
 	

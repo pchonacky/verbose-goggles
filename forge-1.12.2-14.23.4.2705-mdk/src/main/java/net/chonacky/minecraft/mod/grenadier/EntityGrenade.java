@@ -14,11 +14,15 @@ public class EntityGrenade extends EntityThrowable {
 	
 	private int fuse;
 
-	//not used
-	public EntityGrenade(World world) {
-		super(world);
-	}
+	
+public EntityGrenade(World world) {
+	super(world);
+	this.fuse = 20;
+	this.noClip=true;
 
+}
+	
+	
 	public EntityGrenade(World world, EntityLivingBase player) {
 		super(world, player);
 		this.fuse = 20;
@@ -27,15 +31,18 @@ public class EntityGrenade extends EntityThrowable {
 		Vec2f pitchYaw = player.getPitchYaw();
 		double pitch = pitchYaw.y;
 		double yaw = pitchYaw.x;
-		System.out.println("Pitch : "+pitch+"  Yaw : "+yaw);
-		System.out.println("Xfactor: " + Math.sin(yaw) );
+
 		double xVeloc = 0-(vFactor*(Math.sin(yaw)));
 		double yVeloc = 0-(vFactor*(Math.sin(pitch)));
 		double zVeloc = vFactor*(Math.cos(yaw));
 		this.setVelocity(xVeloc, yVeloc, zVeloc);
-		System.out.println("x velocity = "+ xVeloc +
-				"	y velocity = "+yVeloc+
-				"	z velocity = "+zVeloc);
+		
+//  Debugging code		
+//		System.out.println("Pitch : "+pitch+"  Yaw : "+yaw);
+//		System.out.println("Xfactor: " + Math.sin(yaw) );
+//		System.out.println("x velocity = "+ xVeloc +
+//				"	y velocity = "+yVeloc+
+//				"	z velocity = "+zVeloc);
 	}
 
 	//not used
@@ -48,7 +55,7 @@ public class EntityGrenade extends EntityThrowable {
 
 	@Override
 	public void onUpdate() {
-		super.onUpdate();
+		
 		if (this.world.isRemote) {
 			System.out.println("X : " + this.posX+"	"+"Y : " + this.posY+"	"+"Z : " + this.posZ);
 		}
@@ -65,6 +72,7 @@ public class EntityGrenade extends EntityThrowable {
 				this.setDead();
 			}
 		}
+		super.onUpdate();
 	}
 
 	//stop if grenade hits something	
