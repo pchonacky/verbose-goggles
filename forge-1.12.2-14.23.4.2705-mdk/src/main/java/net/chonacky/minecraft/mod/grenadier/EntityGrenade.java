@@ -38,11 +38,11 @@ public EntityGrenade(World world) {
 		this.setVelocity(xVeloc, yVeloc, zVeloc);
 		
 //  Debugging code		
-//		System.out.println("Pitch : "+pitch+"  Yaw : "+yaw);
-//		System.out.println("Xfactor: " + Math.sin(yaw) );
-//		System.out.println("x velocity = "+ xVeloc +
-//				"	y velocity = "+yVeloc+
-//				"	z velocity = "+zVeloc);
+		System.out.println("Pitch : "+pitch+"  Yaw : "+yaw);
+		System.out.println("Xfactor: " + Math.sin(yaw) );
+		System.out.println("x velocity = "+ xVeloc +
+				"	y velocity = "+yVeloc+
+				"	z velocity = "+zVeloc);
 	}
 
 	//not used

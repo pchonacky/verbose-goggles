@@ -8,9 +8,6 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
-
-import net.chonacky.minecraft.mod.grenadier.ModItems;
 
 
 
@@ -21,13 +18,7 @@ public class Registry {
 	public static int ID=0;
 	
 	
-//	//ObjectHolders
-//	@ObjectHolder(Grenadier.MODID)
-//	public static class Objects {
-//		public static final Item grenade = null;
-//		public static final Item myfireball = null;
-//		public static final EntityEntry entityGrenade = null;
-//	}
+
 
 	
 	//Register Items
