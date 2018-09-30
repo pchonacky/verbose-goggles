@@ -15,11 +15,23 @@ public class ModItems {
 	public static  int ID = 0;
 	public static  Item grenade = new ItemGrenade();
 	public static  Item myfireball = new ItemMyFireball();
-	public static  EntityEntry entityGrenade = EntityEntryBuilder.create()
+
+
+	public static boolean eG = ENTITIES.add(EntityEntryBuilder.create()
 			.entity(EntityGrenade.class)
 			.id("grenade", ID++)
 		    .tracker(64, 20, false)
 			.name("grenade")
-			.build();
+			.build());
+	
+	public static boolean eMF = ENTITIES.add(EntityEntryBuilder.create()
+			.entity(EntityGrenade.class)
+			.id("myfireball", ID++)
+		    .tracker(64, 20, false)
+			.name("myfireball")
+			.build());
+	
+	
+	//EntityMyFireball is not registered as it will use the parent class for rendering
 
 }

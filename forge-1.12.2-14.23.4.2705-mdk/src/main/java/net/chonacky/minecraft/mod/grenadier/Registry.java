@@ -15,16 +15,9 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 public class Registry {
 	
 
-	public static int ID=0;
-	
-	
-
-
-	
 	//Register Items
 	@SubscribeEvent
 	public static void registerItems(Register<Item> event)  {
-		//TODO find out why this doesn't interate?
 		System.out.println(">>Number of items to iterate : "+ModItems.ITEMS.size());
 		for (Item thisItem : ModItems.ITEMS) {
 			System.out.println(">>>Registering "+ thisItem.toString());
@@ -34,7 +27,9 @@ public class Registry {
 	//Register Entities
 	@SubscribeEvent
 	public static void registerEntities(Register<EntityEntry> event) {
-		event.getRegistry().register(ModItems.entityGrenade);
+		for (EntityEntry thisEntity : ModItems.ENTITIES) {
+			event.getRegistry().register(thisEntity);	
+		}
 	}
 	
 	
