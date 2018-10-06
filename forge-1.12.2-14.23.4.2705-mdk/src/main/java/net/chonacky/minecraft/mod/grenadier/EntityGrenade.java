@@ -7,7 +7,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec2f;
 import net.minecraft.world.World;
 
 public class EntityGrenade extends EntityThrowable {
@@ -19,30 +18,28 @@ public EntityGrenade(World world) {
 	super(world);
 	this.fuse = 20;
 	this.noClip=true;
-
-}
+	}
 	
 	
 	public EntityGrenade(World world, EntityLivingBase player) {
 		super(world, player);
 		this.fuse = 20;
 		this.noClip=true;
-		double vFactor = 0.5D;
-		Vec2f pitchYaw = player.getPitchYaw();
-		double pitch = pitchYaw.y;
-		double yaw = pitchYaw.x;
+		double vFactor = 1.0D;
+		double pitch = (double)player.rotationPitch;
+		double yaw = (double) player.rotationYaw;
+		//player.sendMessage(new TextComponentString("Pitch: "+pitch));
+		//player.sendMessage(new TextComponentString("Yaw  : "+yaw));
 
-		double xVeloc = 0-(vFactor*(Math.sin(yaw)));
-		double yVeloc = 0-(vFactor*(Math.sin(pitch)));
-		double zVeloc = vFactor*(Math.cos(yaw));
-		this.setVelocity(xVeloc, yVeloc, zVeloc);
-		
-//  Debugging code		
-		System.out.println("Pitch : "+pitch+"  Yaw : "+yaw);
-		System.out.println("Xfactor: " + Math.sin(yaw) );
-		System.out.println("x velocity = "+ xVeloc +
-				"	y velocity = "+yVeloc+
-				"	z velocity = "+zVeloc);
+		double xVeloc = -(vFactor*(Math.sin(yaw/360*2*Math.PI)));
+		double zVeloc = (vFactor*(Math.cos(yaw/360*2*Math.PI)));
+		double yVeloc = -(vFactor*(Math.sin(pitch/360*2*Math.PI)));
+	
+		//player.sendMessage(new TextComponentString(xVeloc+","+yVeloc+","+zVeloc));
+		this.motionX = xVeloc;
+		this.motionY = yVeloc;
+		this.motionZ = zVeloc;
+
 	}
 
 	//not used
@@ -56,8 +53,8 @@ public EntityGrenade(World world) {
 	@Override
 	public void onUpdate() {
 		
-		if (this.world.isRemote) {
-			System.out.println("X : " + this.posX+"	"+"Y : " + this.posY+"	"+"Z : " + this.posZ);
+		if (!this.world.isRemote) {
+			//System.out.println("X : " + this.posX+"	"+"Y : " + this.posY+"	"+"Z : " + this.posZ);
 		}
 		//Decrement Fuse		
 		this.fuse--;	
@@ -75,9 +72,11 @@ public EntityGrenade(World world) {
 		super.onUpdate();
 	}
 
-	//stop if grenade hits something	
+
 	@Override
 	protected void onImpact(RayTraceResult movObjPos) {
+		
+		//stop if grenade hits something	
 		if ((movObjPos.entityHit != null) && (!this.world.isRemote)) { 
 			movObjPos.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) this.getThrower()),1);
 			this.posX = movObjPos.entityHit.posX;
@@ -86,10 +85,9 @@ public EntityGrenade(World world) {
 			this.motionX=0F;
 			this.motionY=0F;
 			this.motionZ=0F;
-			
 		}
-		else { //didn't hit an entity (hit a block)
-		//Bounce Grenade
+		
+		else { //didn't hit an entity (hit a block)//Bounce Grenade
 		//Which side was hit. : 
 				if ( movObjPos.sideHit == EnumFacing.UP) { //top hit
 
@@ -99,11 +97,13 @@ public EntityGrenade(World world) {
 				}
 				else { 
 					if ( (movObjPos.sideHit == EnumFacing.EAST) || (movObjPos.sideHit == EnumFacing.WEST)) { // east/west hit
-					this.motionZ = -(0.9 * this.motionZ);
+						this.motionX = -(0.9 * this.motionX);
+						this.motionZ =  (0.9 * this.motionZ);
 					}
 					else { 
 						if ( (movObjPos.sideHit == EnumFacing.NORTH) || (movObjPos.sideHit == EnumFacing.SOUTH)) {// north/south hit
-							this.motionX = -(0.9 * this.motionX);
+							this.motionX =  (0.9 * this.motionX);
+							this.motionZ = -(0.9 * this.motionZ);
 						}
 						else {
 							if (movObjPos.sideHit == EnumFacing.DOWN) { //bottom hit

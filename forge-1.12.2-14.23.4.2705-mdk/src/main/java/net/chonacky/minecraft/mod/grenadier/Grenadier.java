@@ -41,25 +41,18 @@ public class Grenadier
     @EventHandler 
     public void preInit(FMLPreInitializationEvent event){
     	
+    	//Register custom renderers (Client only)
     	proxy.RegisterRenderers();
     }
 
-	
-
-	
-		
-	
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-		
     }
-
 
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-    	
     }
 
 

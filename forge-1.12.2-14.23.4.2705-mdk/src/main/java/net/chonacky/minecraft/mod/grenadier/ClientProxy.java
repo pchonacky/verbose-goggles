@@ -16,7 +16,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 /**
  * @author philip
- *
+ * Methods here mirror methods in the main proxy but will run only on the client
  */
 public class ClientProxy extends ServerProxy {
 	

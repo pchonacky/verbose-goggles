@@ -2,21 +2,18 @@ package net.chonacky.minecraft.mod.grenadier;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemMyFireball extends Item {
+public class ItemMyFireball extends ItemBase {
 	private static 	String name = "myfireball";
 	
 	public ItemMyFireball() {
-		this.setUnlocalizedName(name);
-		this.setRegistryName(name);
+		super(name);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 		this.setMaxStackSize(18);
-		ModItems.ITEMS.add(this);
 	}
 	
 
