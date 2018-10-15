@@ -3,6 +3,9 @@ package net.chonacky.minecraft.mod.grenadier;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
@@ -11,12 +14,15 @@ public class ModItems {
 	
 	//ListArrays for registered items
 	public static List<Item> ITEMS = new ArrayList<Item>();
+	public static List<Block> BLOCKS = new ArrayList<Block>();
 	public static List<EntityEntry> ENTITIES = new ArrayList<EntityEntry>();
-	
-	
+
+
 	
 	public static  Item grenade = new ItemGrenade();
 	public static  Item myfireball = new ItemMyFireball();
+	public static  Block sided_block = new BlockSided();
+	
 
 
 	//assigning values forces entity entries to get added to the ArrayList for registration
@@ -36,6 +42,7 @@ public class ModItems {
 		    .tracker(64, 20, false)
 			.name("myfireball")
 			.build());
+	
 	
 	
 	//EntityMyFireball is not registered as it will use the parent class for rendering

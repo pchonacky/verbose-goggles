@@ -43,6 +43,7 @@ public class Grenadier
     	
     	//Register custom renderers (Client only)
     	proxy.RegisterRenderers();
+    	
     }
 
 

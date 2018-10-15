@@ -2,6 +2,7 @@ package net.chonacky.minecraft.mod.grenadier;
 
 
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent.Register;
@@ -18,11 +19,18 @@ public class Registry {
 	//Register Items
 	@SubscribeEvent
 	public static void registerItems(Register<Item> event)  {
-		System.out.println(">>Number of items to iterate : "+ModItems.ITEMS.size());
 		for (Item thisItem : ModItems.ITEMS) {
-			System.out.println(">>>Registering "+ thisItem.toString());
-			event.getRegistry().register(thisItem);}
+			event.getRegistry().register(thisItem);
+			}
 		}
+	
+	//Register Blocks
+	@SubscribeEvent
+	public static void registerBlocks(Register<Block> event)	{
+		for (Block thisBlock : ModItems.BLOCKS ) {
+			event.getRegistry().register(thisBlock);
+			}
+	}
 	
 	//Register Entities
 	@SubscribeEvent
@@ -37,11 +45,15 @@ public class Registry {
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event) {
 		// : iterate item list and call client proxy model registration
-		System.out.println(">>Number of items to iterate : "+ModItems.ITEMS.size());
+		System.out.println(">>> Registering Item Models");
 		for ( Item thisItem : ModItems.ITEMS) {
-			System.out.println(">>>Registering MODEL FOR "+ thisItem.toString());
 			Grenadier.proxy.registerItemModel(thisItem, 0, "inventory");
 		}
+		System.out.println(">>> Registering Block Models");
+		for (Block thisBlock : ModItems.BLOCKS) {
+			Grenadier.proxy.registerItemModel(Item.getItemFromBlock(thisBlock), 0, "normal");
+		}
+		System.out.println(">>> Done Registering Models");
 	}
 	
 	

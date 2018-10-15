@@ -1,0 +1,11 @@
+{
+	"parent": "block/cube",
+	"textures": {
+		"down": "grenadier:blocks/down",
+		"up": "grenadier:blocks/up",
+		"north": "grenadier:blocks/north",
+		"east": "grenadier:blocks/east",
+		"south": "grenadier:blocks/south",
+		"west": "grenadier:blocks/west"
+	}
+}

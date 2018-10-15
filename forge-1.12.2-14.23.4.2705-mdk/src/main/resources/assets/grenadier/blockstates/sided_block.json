@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "grenadier:sided_block" }
+    }
+}
