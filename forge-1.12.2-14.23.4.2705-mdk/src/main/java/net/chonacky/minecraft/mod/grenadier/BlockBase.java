@@ -8,6 +8,10 @@ import net.minecraft.item.ItemBlock;
 
 public class BlockBase extends Block {
 
+	/*
+	 * Not needed: I originally created private fields and setters to allow for Block variations
+	 * Since this class gets cast into the BLock Class, the setters were unavailable
+	 */
 //	//Default BlockStates:: can be modified by public setters
 //	private BlockRenderLayer blockRenderLayer = BlockRenderLayer.SOLID;
 //	private boolean opaque = true;
@@ -61,9 +65,13 @@ public class BlockBase extends Block {
 //	    return true;
 //	  }
 
+//******************************************************************************//
+	
 	  
-	  
-	  
+	/*
+	 * Not needed: I originally created private fields and setters to allow for Block variations
+	 * Since this class gets cast into the BLock Class, the setters were unavailable
+	 */  
 	  
 //	/**
 //	 * @param blockRenderLayer sets the Block Render Layer

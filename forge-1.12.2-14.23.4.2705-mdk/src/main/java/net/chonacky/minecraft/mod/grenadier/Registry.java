@@ -1,6 +1,8 @@
 package net.chonacky.minecraft.mod.grenadier;
 
-
+/*
+ * Subscribes custom events for registering Mod items, blocks, etc.
+ */
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -44,16 +46,13 @@ public class Registry {
 	//Register Models
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event) {
-		// : iterate item list and call client proxy model registration
-		System.out.println(">>> Registering Item Models");
+		// : iterate lists and call client proxy model registration
 		for ( Item thisItem : ModItems.ITEMS) {
 			Grenadier.proxy.registerItemModel(thisItem, 0, "inventory");
 		}
-		System.out.println(">>> Registering Block Models");
 		for (Block thisBlock : ModItems.BLOCKS) {
 			Grenadier.proxy.registerItemModel(Item.getItemFromBlock(thisBlock), 0, "normal");
 		}
-		System.out.println(">>> Done Registering Models");
 	}
 	
 	

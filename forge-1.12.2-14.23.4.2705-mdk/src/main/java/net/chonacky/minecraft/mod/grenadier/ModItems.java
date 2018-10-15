@@ -1,11 +1,14 @@
 package net.chonacky.minecraft.mod.grenadier;
 
+/*
+ * ModItems is the collection of all registration lists to be used by Registry class
+ * (which is actually responsible for registering Mod Items, Entities, Blocks, etc.)
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
@@ -18,15 +21,19 @@ public class ModItems {
 	public static List<EntityEntry> ENTITIES = new ArrayList<EntityEntry>();
 
 
-	
+	/*
+	 * instantiating custom classes will cause those classes 
+	 * to add themselves to the registry lists above
+	 */
 	public static  Item grenade = new ItemGrenade();
 	public static  Item myfireball = new ItemMyFireball();
 	public static  Block sided_block = new BlockSided();
 	
 
 
-	//assigning values forces entity entries to get added to the ArrayList for registration
-	
+	/*
+	 * assigning static values forces entity entries to get added to the ArrayList for registration
+	 */
 	public static  int ID = 0;	//ID for entity entry registration
 	
 	public static boolean eG = ENTITIES.add(EntityEntryBuilder.create()
@@ -43,8 +50,4 @@ public class ModItems {
 			.name("myfireball")
 			.build());
 	
-	
-	
-	//EntityMyFireball is not registered as it will use the parent class for rendering
-
-}
+	}
